@@ -17,3 +17,11 @@ steps:
     archiveType: 'zip'
     archiveFile: '$(System.DefaultWorkingDirectory)/$(Build.BuildId).zip'
     replaceExistingArchive: true
+
+- task: AzureRmWebAppDeployment@4
+  inputs:
+    ConnectionType: 'AzureRM'
+    azureSubscription: 'Sanbox Subscription (97233d5d-45d9-49d9-8a20-3934d74fe5d8)'
+    appType: 'webApp'
+    WebAppName: 'jayawebapp'
+    packageForLinux: '$(System.DefaultWorkingDirectory)/**/*.zip'
